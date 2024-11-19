@@ -67,6 +67,8 @@ class higherLevel(object):
         Name of the experiment for output files
     project_directory : str
         Path to the derivatives data directory
+    stimuli_directory : str
+        Path to the stimuli directory for input to model
 
     Attributes
     ----------
@@ -84,21 +86,18 @@ class higherLevel(object):
         Path to the stimuli directory for input
     """
     
-    def __init__(self, subjects, experiment_name, project_directory):        
+    def __init__(self, subjects, experiment_name, project_directory, stimuli_directory):        
         """Constructor method
         """
         self.subjects           = subjects
         self.exp                = experiment_name
         self.project_directory  = project_directory
         self.figure_folder      = os.path.join(project_directory, 'figures')
-        self.deriv_folder       = os.path.join(project_directory, 'derivatives')
-        self.stimuli_folder   = os.path.join(project_directory, 'stimuli')
+        self.deriv_folder       = project_directory
+        self.stimuli_folder     = stimuli_directory
         
         if not os.path.isdir(self.figure_folder):
             os.mkdir(self.figure_folder)
-        
-        if not os.path.isdir(self.deriv_folder):
-            os.mkdir(self.deriv_folder)
             
  
     def plot_color_space(self, ):

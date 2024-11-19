@@ -29,15 +29,9 @@ higher_level    = True   # all subjects' dataframe, pupil and behavior higher le
 # ----------------------- 
 # set path to home directory
 home_dir        = os.path.dirname(os.getcwd()) # one level up from analysis folder
-source_dir      = os.path.join(home_dir, 'raw')
-data_dir        = os.path.join(home_dir, 'derivatives')
+stimuli_folder  = os.path.join(home_dir, 'stimuli')
+deriv_folder    = os.path.join(home_dir, 'derivatives')
 experiment_name = 'task-syn_ideal_learner_model' # 2AFC Decision Task
-
-# copy 'raw' to derivatives if it doesn't exist:
-if not os.path.isdir(data_dir):
-    shutil.copytree(source_dir, data_dir) 
-else:
-    print('Derivatives directory exists. Continuing...')
 
 # -----------------------
 # Participants
@@ -51,7 +45,8 @@ if higher_level:
     higherLevel = higher.higherLevel(
         subjects                = subjects, 
         experiment_name         = experiment_name,
-        project_directory       = data_dir, 
+        project_directory       = deriv_folder, 
+        stimuli_directory       = stimuli_folder, 
         )
     
     ''' Ideal learner model
